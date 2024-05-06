@@ -12,6 +12,9 @@ import Homepage from './Homepage/Homepage';
 function App() {
   return (
     <>
+    <div class="hero">
+        <h1>Personal Budget App</h1>
+    </div>
     <div text-align ="center">
 
       <Router>
@@ -27,7 +30,11 @@ function App() {
         </Routes>
       </Router>
     </div>    
-   
+    <footer class="bottom" text-align="center"> 
+    <div class="row justify-content-center" text-align="center">
+        All rights reserved &copy; Sai krishna
+    </div>
+    </footer>
     </>
   );
 }
