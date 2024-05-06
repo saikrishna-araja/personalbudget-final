@@ -10,7 +10,7 @@ function Loginpage() {
     const navigate = useNavigate();
 
    // const server = 'http://localhost:3001/login';
-    const server = 'http://64.23.152.198:3001/login';
+   const server = 'https://seashell-app-kp3wl.ondigitalocean.app/api/login';
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);

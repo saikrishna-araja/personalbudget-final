@@ -4,7 +4,7 @@ import pako from 'pako';
 
 function Budget() {
     //const server = 'http://localhost:3001/makebudget';
-    const server = 'http://64.23.152.198:3001/makebudget';
+    const server = 'https://seashell-app-kp3wl.ondigitalocean.app/api/makebudget';
 
     const username = localStorage.getItem('username');
 
@@ -50,16 +50,18 @@ function Budget() {
                 <label htmlFor="title">Title: </label>
                 <input type="text" id="title" value={title} onChange={handleTitleChange} required/>
             </div>
-            
+            <br></br>
             <div class="row justify-content-center">
                 <label htmlFor="budget">Budget: </label>
                 <input type="number" id="budget" value={budget} onChange={handleBudgetChange} required/>
             </div>
+            <br></br>
             <div>
                 <label htmlFor="tags">Tags: </label>
                 <input type="text" id="tags" value={tags} onChange={handleTagsChange} required/>
             </div>
-            <div class="row justify-content-center">    <button type="submit">Create Budget Item</button> </div>
+            <br/>
+            <div class="row justify-content-center">   <button type="submit">Create Budget Item</button> </div>
             </form>
         </div>
     </div>

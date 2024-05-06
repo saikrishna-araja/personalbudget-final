@@ -13,8 +13,8 @@ ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearS
 
 
 function Dashboard() {
-  const server = 'http://localhost:3001/getbudget';
-  //const server = 'http://161.35.188.98:3000/getbudget';
+  //const server = 'http://localhost:3001/getbudget';
+  const server = 'https://seashell-app-kp3wl.ondigitalocean.app/api/getbudget';
   const navigate = useNavigate();
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
