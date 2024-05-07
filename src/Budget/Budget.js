@@ -4,7 +4,7 @@ import pako from 'pako';
 
 function Budget() {
     //const server = 'http://localhost:3001/makebudget';
-    const server = 'https://seashell-app-kp3wl.ondigitalocean.app/api/makebudget';
+    const server = 'https://clownfish-app-fd9pz.ondigitalocean.app/api/makebudget';
 
     const username = localStorage.getItem('username');
 

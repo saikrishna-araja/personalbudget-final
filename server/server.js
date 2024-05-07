@@ -55,7 +55,7 @@ function checkDuplicateUser(username) {
 }
 
 //Signup function for users
-app.post('/api/signup', async (req, res) => {
+app.post('/signup', async (req, res) => {
   const { username, password } = req.body; 
   if (!username || !password) {
     res.status(400).json({ error: 'Both username and password are required' });
@@ -81,7 +81,7 @@ app.post('/api/signup', async (req, res) => {
   }
 });
 
-app.post('/api/refresh', async (req, res) => {
+app.post('/refresh', async (req, res) => {
   const { username } = req.body; 
   if (!username) {
     res.status(400).json({ error: 'Username required' });
@@ -101,7 +101,7 @@ app.post('/api/refresh', async (req, res) => {
 
 
 //Login function
-app.post('/api/login', async (req, res) => {
+app.post('/login', async (req, res) => {
 
   const { username, password } = req.body;
   if (!username || !password) { //Needs both username and password
@@ -152,7 +152,7 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-app.post('/api/makebudget', async(req, res) => {
+app.post('/makebudget', async(req, res) => {
   const {username, title, budget, tags} = req.body;
   if (!username) {
     res.status(400).json({ error: 'Username required.' });
@@ -180,7 +180,7 @@ app.post('/api/makebudget', async(req, res) => {
   }
 })
 
-app.post('/api/getbudget', async(req, res) => {
+app.post('/getbudget', async(req, res) => {
   const {username} = req.body;
   if (!username) {
     res.status(400).json({ error: 'Username required.' });
