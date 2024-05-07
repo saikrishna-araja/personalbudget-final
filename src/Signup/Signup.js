@@ -46,7 +46,7 @@ const handleSubmit = (event) => {
             <br></br>
             <div className="row justify-content-center">
             <label htmlFor="password">Password: </label>
-            <input aria-label={"passwordText"} type="text" id="password" value={password} onChange={handlePasswordChange} required/>
+            <input aria-label={"passwordText"} type="password" id="password" value={password} onChange={handlePasswordChange} required/>
             </div>
             <br></br>
             <div className="row justify-content-center"><button type="submit">Register</button></div>
