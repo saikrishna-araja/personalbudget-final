@@ -58,6 +58,7 @@ function Loginpage() {
                 <br></br>
                 <div className="row justify-content-center "><button type="submit">Login</button></div>
             </form>
+            <h4>Please register before logging in if you are first time user.</h4>
         </div>
     );
 }
