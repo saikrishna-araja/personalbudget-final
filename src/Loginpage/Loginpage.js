@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import pako from 'pako';
 
 function Loginpage() {
@@ -9,7 +9,7 @@ function Loginpage() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    // const server = 'http://localhost:3001/login';
+    //const server = 'http://localhost:3001/login';
     const server = 'https://clownfish-app-fd9pz.ondigitalocean.app/api/login';
 
     const handleUsernameChange = (event) => {

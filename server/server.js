@@ -88,7 +88,7 @@ app.post('/refresh', async (req, res) => {
     return;
   }
   try {
-    const expiresIn = 60;
+    const expiresIn = 50;
       res.json({
         success: 'Refreshed',
         err: null,
@@ -126,7 +126,7 @@ app.post('/login', async (req, res) => {
 
           if (results.length > 0) { //If there is a user with username
             const user = results[0];
-            const expiresIn = 60;
+            const expiresIn = 50;
             const hashedPassword = user.password.toString();
             console.log(hashedPassword);
             const tokenPwd =await encryptPassword(password);
@@ -153,18 +153,18 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/makebudget', async(req, res) => {
-  const {username, title, budget, tags} = req.body;
+  const {username, title, budget,expenditure, tags,month} = req.body;
   if (!username) {
     res.status(400).json({ error: 'Username required.' });
-      return;
+    return;
   }
 
   try {
     pool.getConnection(function(err, connection) {
       if (err) throw err;
 
-      connection.query('INSERT INTO budget (username, title, budget, tags) VALUES (?, ?, ?, ?)', 
-      [username, title, budget, tags],
+      connection.query('INSERT INTO budget (username, title, budget,expenditure, tags,month) VALUES (?, ?,?, ?, ?, ?)', 
+      [username, title, budget,expenditure, tags, month],
       async function(error, results, fields) {
         connection.release();
         if (error) {
@@ -181,7 +181,7 @@ app.post('/makebudget', async(req, res) => {
 })
 
 app.post('/getbudget', async(req, res) => {
-  const {username} = req.body;
+  const {username,month} = req.body;
   if (!username) {
     res.status(400).json({ error: 'Username required.' });
       return;
@@ -191,8 +191,8 @@ app.post('/getbudget', async(req, res) => {
     pool.getConnection(function(err, connection) {
       if (err) throw err;
 
-      connection.query('SELECT * FROM budget WHERE username = ?', 
-      [username],
+      connection.query('SELECT * FROM budget WHERE username = ? and month =?', 
+      [username,month],
       async function(error, results, fields) {
         connection.release();
         if (error) {

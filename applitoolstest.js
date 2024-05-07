@@ -25,7 +25,7 @@ describe('Visual Regression Test', () => {
     try {
       await eyes.open(browser, 'Your App Name', 'Test Name');
 
-      await browser.url('http://64.23.152.198:3000');
+      await browser.url('https://clownfish-app-fd9pz.ondigitalocean.app/');
 
       await eyes.check('Full Page', Target.window());
 

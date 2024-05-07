@@ -57,7 +57,6 @@ const handleSubmit = (event) => {
       <div className="App">
         <h1>User registered successfully.</h1>
       </div>
-
     );
   
 }

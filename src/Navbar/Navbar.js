@@ -7,7 +7,6 @@ function Navbar() {
   function logoutClick() {
     localStorage.clear();
     navigate('/login');
-
   }
 
   return (

@@ -12,11 +12,10 @@ import Homepage from './Homepage/Homepage';
 function App() {
   return (
     <>
-    <div class="hero">
+    <div className="hero">
         <h1>Personal Budget App</h1>
     </div>
     <div text-align ="center">
-
       <Router>
         <Navbar/>
         <Routes>
@@ -30,8 +29,8 @@ function App() {
         </Routes>
       </Router>
     </div>    
-    <footer class="bottom" text-align="center"> 
-    <div class="row justify-content-center" text-align="center">
+    <footer className="bottom" text-align="center"> 
+    <div className="row justify-content-center" text-align="center">
         All rights reserved &copy; Sai krishna
     </div>
     </footer>

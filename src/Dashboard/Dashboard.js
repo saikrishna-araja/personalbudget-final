@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import { useLocation } from 'react-router-dom';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
@@ -18,16 +16,48 @@ function Dashboard() {
   const navigate = useNavigate();
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
+  const [month,setMonth] = useState('');
 
   const options = {
     maintainAspectRatio: false
   }
   
+  const handleMonthChange = (event) =>{
+    setMonth(event.target.value);
+  }
+
   const [dataSource, setDataSource] = useState ({
     labels: [],
     datasets: [
         {
         label: 'Budget',
+        data: [],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+    ],
+    borderColor: [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)',
+    ],
+        hoverOffset: 4,
+        borderWidth: 1
+    }]
+  });
+
+  const [expenditure, setExpenditure] = useState ({
+    labels: [],
+    datasets: [
+        {
+        label: 'Expenditure',
         data: [],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -70,7 +100,8 @@ function Dashboard() {
   const getBudget = async () => {
     try {
       const res = await axios.post(server, {
-        username: username
+        username: username,
+        month: month
       });
       const contentEncoding = res.headers['content-encoding'];
 
@@ -116,6 +147,36 @@ function Dashboard() {
       };
 
       setDataSource(newDataSource);
+
+      const expenditureData = {
+        labels: res.data.map((item) => item.title),
+        datasets: [
+          {
+            label: 'Expenditure',
+            data: res.data.map((item) => item.expenditure),
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+            ],
+            hoverOffset: 4,
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      setExpenditure(expenditureData);
       
     } catch (err) {
       console.log(err);
@@ -148,20 +209,39 @@ function Dashboard() {
   }, []);
 
 
-
   return (
     <div>
       <h1 text-align="center">Dashboard</h1>
       <div><button onClick={redirectToBudget}>Create Budget Items</button></div>
       <br></br>
-      <div><button onClick={getBudget}>Get charts</button></div>
+      <div><button onClick={getBudget}>Get charts for </button></div>
+      <div>
+          <label htmlFor="month">Month: </label>
+          <select name="month" id="month" defaultValue={""} onChange={handleMonthChange} required>
+              <option value="">Select a month</option>
+              <option value="Jan">January</option>
+              <option value="Feb">February</option>
+              <option value="Mar">March</option>
+              <option value="Apr">April</option>
+              <option value="May">May</option>
+              <option value="Jun">June</option>
+              <option value="Jul">July</option>
+              <option value="Aug">August</option>
+              <option value="Sep">September</option>
+              <option value="Oct">October</option>
+              <option value="Nov">November</option>
+              <option value="Dec">December</option>
+          </select>                
+      </div>
+      
       <div style={{ display: 'inline-block', width: '300px', height: '300px' }}>
         <Pie data={dataSource} options={options} />
       </div>
+      
       <div style={{ display: 'inline-block', width: '300px', height: '300px' }}>
-        <Doughnut data={dataSource} options={options} />
+        <Doughnut data={expenditure} options={options} />
       </div>
-    
+      
       <div style={{ display: 'inline-block', width: '300px', height: '300px' }}>
         <Bar data={dataSource} options={options} />
       </div>
