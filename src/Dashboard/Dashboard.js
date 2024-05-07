@@ -216,7 +216,6 @@ function Dashboard() {
       <br></br>
       <div><button onClick={getBudget}>Get charts for </button></div>
       <div>
-          <label htmlFor="month">Month: </label>
           <select name="month" id="month" defaultValue={""} onChange={handleMonthChange} required>
               <option value="">Select a month</option>
               <option value="Jan">January</option>
