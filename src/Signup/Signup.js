@@ -7,7 +7,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   var userRegistered = false;
   //const server = 'http://localhost:3001/signup';
-  const server = 'https://seashell-app-kp3wl.ondigitalocean.app/api/signup';
+  const server = 'https://clownfish-app-fd9pz.ondigitalocean.app/api/signup';
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
