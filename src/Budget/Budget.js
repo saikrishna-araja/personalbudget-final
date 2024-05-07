@@ -46,12 +46,12 @@ function Budget() {
     <div>
       <div className="App">
             <form onSubmit={handleSubmit}>
-            <div class="row justify-content-center">
+            <div className="row justify-content-center">
                 <label htmlFor="title">Title: </label>
                 <input type="text" id="title" value={title} onChange={handleTitleChange} required/>
             </div>
             <br></br>
-            <div class="row justify-content-center">
+            <div className="row justify-content-center">
                 <label htmlFor="budget">Budget: </label>
                 <input type="number" id="budget" value={budget} onChange={handleBudgetChange} required/>
             </div>
@@ -61,7 +61,7 @@ function Budget() {
                 <input type="text" id="tags" value={tags} onChange={handleTagsChange} required/>
             </div>
             <br/>
-            <div class="row justify-content-center">   <button type="submit">Create Budget Item</button> </div>
+            <div className="row justify-content-center">   <button type="submit">Create Budget Item</button> </div>
             </form>
         </div>
     </div>

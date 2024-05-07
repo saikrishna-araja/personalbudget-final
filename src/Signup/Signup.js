@@ -5,17 +5,18 @@ function Signup() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  var userRegistered = false;
+  const [userRegistered,setUserRegistered] = useState('');
   //const server = 'http://localhost:3001/signup';
   const server = 'https://clownfish-app-fd9pz.ondigitalocean.app/api/signup';
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
-}
+  }
 
-const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-}
+  const handlePasswordChange = (event) => {
+      setPassword(event.target.value);
+  }
+
 
 const handleSubmit = (event) => {
   event.preventDefault();
@@ -26,10 +27,11 @@ const handleSubmit = (event) => {
   })
   .then(function(response) {
       console.log('success', response.data);
-      userRegistered= true;
+      setUserRegistered(true);
   })
   .catch(function(error) {
       console.log('fail', error);
+      setUserRegistered(false);
   });
 }
 

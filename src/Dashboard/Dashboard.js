@@ -151,15 +151,17 @@ function Dashboard() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <button onClick={redirectToBudget}>Create Budget Items</button>
-      <button onClick={getBudget}>Get charts</button>
+      <h1 text-align="center">Dashboard</h1>
+      <div><button onClick={redirectToBudget}>Create Budget Items</button></div>
+      <br></br>
+      <div><button onClick={getBudget}>Get charts</button></div>
       <div style={{ display: 'inline-block', width: '300px', height: '300px' }}>
         <Pie data={dataSource} options={options} />
       </div>
       <div style={{ display: 'inline-block', width: '300px', height: '300px' }}>
         <Doughnut data={dataSource} options={options} />
       </div>
+    
       <div style={{ display: 'inline-block', width: '300px', height: '300px' }}>
         <Bar data={dataSource} options={options} />
       </div>

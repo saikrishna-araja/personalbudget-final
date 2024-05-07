@@ -9,8 +9,8 @@ function Loginpage() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-   // const server = 'http://localhost:3001/login';
-   const server = 'https://clownfish-app-fd9pz.ondigitalocean.app/api/login';
+    // const server = 'http://localhost:3001/login';
+    const server = 'https://clownfish-app-fd9pz.ondigitalocean.app/api/login';
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -53,7 +53,7 @@ function Loginpage() {
                 <br></br>
                 <div className="row justify-content-center ">
                 <label htmlFor="password">Password: </label>
-                <input aria-label={"passwordText"} type="text" id="password" value={password} onChange={handlePasswordChange} required/>
+                <input aria-label={"passwordText"} type="password" id="password" value={password} onChange={handlePasswordChange} required/>
                 </div>
                 <br></br>
                 <div className="row justify-content-center "><button type="submit">Login</button></div>
