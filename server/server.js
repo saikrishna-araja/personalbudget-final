@@ -25,9 +25,9 @@ exjwt({
 var pool = mysql.createPool({
     connectionLimit : 10,
     host : 'sql5.freemysqlhosting.net',
-    user : 'sql5704047',
-    password : 'tBCV88knM8',
-    database : 'sql5704047'
+    user : 'sql5705986',
+    password : 'yRsw9Ff9mh',
+    database : 'sql5705986'
 });
 
 //Encrypts passwords
